@@ -5,6 +5,8 @@ import Home from "../../Pages/Home/Home/Home";
 import News from "../../Pages/News/News/News";
 import Login from '../../Pages/Login/Login/Login';
 import Register from "../../Pages/Login/Register/Register";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
+import Profle from "../../Pages/Others/Profle";
 
 export const routes = createBrowserRouter([
     {
@@ -23,7 +25,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/news/:id',
-                element: <News></News>,
+                element: <PrivateRoutes><News></News></PrivateRoutes> ,
                 loader : ({params}) => fetch(`http://localhost:5000/all-news/${params.id}`)
             },
             {
@@ -33,6 +35,10 @@ export const routes = createBrowserRouter([
             {
                 path : '/register',
                 element : <Register></Register>
+            },
+            {
+                path : '/profile',
+                element : <PrivateRoutes><Profle></Profle></PrivateRoutes>
             }
         ]
     }
